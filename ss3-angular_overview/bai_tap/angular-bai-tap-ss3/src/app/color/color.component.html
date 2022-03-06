@@ -1,0 +1,6 @@
+<p>color works!</p>
+<div>
+  <label>Choose color: </label><input type="color" [(ngModel)]="colorPiker" #color>
+</div>
+
+<h1 [ngStyle]="{color: color.value}">Chiến ML</h1>
