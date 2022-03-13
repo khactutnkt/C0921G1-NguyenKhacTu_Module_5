@@ -1,57 +1,111 @@
 <div class="container">
   <div class="row">
     <h2 class="text-center">THÊM MỚI KHÁCH HÀNG</h2>
-    <form class="row g-3">
+    <form class="row g-3" [formGroup]="createForm" (ngSubmit)="createCustomer()">
       <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">Họ và tên</label>
-        <input type="text" class="form-control" id="inputEmail4">
-      </div>
-      <div class="col-md-4">
-        <label for="inputPassword4" class="form-label">Ngày sinh</label>
-        <input type="date" class="form-control" >
+        <label for="customerId" class="form-label">Mã khách hàng</label>
+        <input type="text" class="form-control" id="customerId" required="required" formControlName="id">
+        <div class="text-danger"
+          *ngIf="createForm.get('id').hasError('required') && createForm.get('id').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="createForm.get('id').hasError('pattern')">
+          ID không hợp lệ.
+        </div>
       </div>
 
+
+      <div class="col-md-4">
+        <label for="customerName" class="form-label">Họ và tên</label>
+        <input type="text" class="form-control" id="customerName" required="required" formControlName="name">
+        <div class="text-danger"
+             *ngIf="createForm.get('name').hasError('required') && createForm.get('name').dirty">
+          Mục này không được để trống.
+        </div>
+      </div>
+
+
       <div class="col-md-2">
-        <label for="inputPassword4" class="form-label">Giới tính</label>
+        <label class="form-label">Giới tính</label>
         <div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">Nam</label>
+            <input class="form-check-input" type="radio" value="1" required="required" formControlName="gender">
+            <label class="form-check-label" >Nam</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">Nữ</label>
+            <input class="form-check-input" type="radio" value="0" required="required" formControlName="gender">
+            <label class="form-check-label" >Nữ</label>
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
-        <label for="inputPassword4" class="form-label">Chứng minh nhân dân</label>
-        <input type="text" class="form-control" id="inputPassword4">
+        <label for="customerBirthday" class="form-label">Ngày sinh</label>
+        <input type="date" class="form-control" id="customerBirthday" required="required" formControlName="birthday">
+        <div class="text-danger"
+             *ngIf="createForm.get('birthday').hasError('required') && createForm.get('birthday').dirty">
+          Mục này không được để trống.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="customerIdCard" class="form-label">Chứng minh nhân dân</label>
+        <input type="text" class="form-control" id="customerIdCard" required="required" formControlName="idCard">
+        <div class="text-danger"
+             *ngIf="createForm.get('idCard').hasError('required') && createForm.get('idCard').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="createForm.get('idCard').hasError('pattern')">
+          Số chứng minh nhân dân không hợp lệ.
+        </div>
       </div>
       <div class="col-md-4">
-        <label for="inputPassword4" class="form-label">Điện thoại</label>
-        <input type="text" class="form-control" >
+        <label for="customerPhone" class="form-label">Điện thoại</label>
+        <input type="text" class="form-control" id="customerPhone" required="required" formControlName="phone">
+        <div class="text-danger"
+             *ngIf="createForm.get('phone').hasError('required') && createForm.get('phone').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="createForm.get('phone').hasError('pattern')">
+          Số điện thoại không hợp lệ.
+        </div>
       </div>
+
       <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">Email</label>
-        <input type="email" class="form-control">
+        <label for="customerEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="customerEmail" required="required" formControlName="email">
+        <div class="text-danger"
+             *ngIf="createForm.get('email').hasError('required') && createForm.get('email').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="createForm.get('email').hasError('email')">
+          Email không hợp lệ.
+        </div>
       </div>
 
       <div class="col-md-3">
         <label for="inputState" class="form-label">Loại khách</label>
-        <select id="inputState" class="form-select">
-          <option selected>-- Chọn loại khách --</option>
-          <option>...</option>
+        <select id="inputState" class="form-select" formControlName="customerType">
+          <option disabled selected>-- Chọn loại khách --</option>
+          <option *ngFor="let item of customerTypeList" value="{{item}}">{{item.name}}</option>
         </select>
       </div>
 
-      <div class="col-md-9">
-        <label for="inputPassword4" class="form-label">Địa chỉ</label>
-        <input type="number" class="form-control" >
+      <div class="col-md-5">
+        <label for="customerAddress" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" id="customerAddress" required="required" formControlName="address">
+        <div class="text-danger"
+             *ngIf="createForm.get('address').hasError('required') && createForm.get('address').dirty">
+          Mục này không được để trống.
+        </div>
       </div>
 
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Xác nhận</button>
+        <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">Xác nhận</button>
       </div>
     </form>
   </div>

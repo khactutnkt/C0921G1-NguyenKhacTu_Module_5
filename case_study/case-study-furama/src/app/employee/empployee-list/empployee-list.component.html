@@ -3,31 +3,31 @@
     <div class="col-12">
       <div class="d-flex bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight">
-          <a type="button" class="btn btn-primary ">Thêm mới nhân viên</a>
+          <a type="button" class="btn btn-primary" [routerLink]="['/employee/create']">Thêm mới nhân viên</a>
         </div>
-        <form class="row gy-2 gx-3 align-items-center">
-          <div class="col-auto">
-            <label class="visually-hidden" for="autoSizingInput">Tên </label>
-            <input type="text" class="form-control" id="autoSizingInput" placeholder="Nhập tên nhân viên">
-          </div>
-          <div class="col-auto">
-            <label class="visually-hidden" for="autoSizingSelect">Vị trí</label>
-            <select class="form-select" id="autoSizingSelect">
-              <option selected>Chọn vị trí...</option>
-              <option value="1">One</option>
-            </select>
-          </div>
-          <div class="col-auto">
-            <label class="visually-hidden" for="autoSizingSelect">Trình độ</label>
-            <select class="form-select">
-              <option selected>Chọn trình độ...</option>
-              <option value="1">One</option>
-            </select>
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-          </div>
-        </form>
+<!--        <form class="row gy-2 gx-3 align-items-center">-->
+<!--          <div class="col-auto">-->
+<!--            <label class="visually-hidden" for="autoSizingInput">Tên </label>-->
+<!--            <input type="text" class="form-control" id="autoSizingInput" placeholder="Nhập tên nhân viên">-->
+<!--          </div>-->
+<!--          <div class="col-auto">-->
+<!--            <label class="visually-hidden" for="autoSizingSelect">Vị trí</label>-->
+<!--            <select class="form-select" id="autoSizingSelect">-->
+<!--              <option selected>Chọn vị trí...</option>-->
+<!--              <option value="1">One</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--          <div class="col-auto">-->
+<!--            <label class="visually-hidden" for="autoSizingSelect">Trình độ</label>-->
+<!--            <select class="form-select">-->
+<!--              <option selected>Chọn trình độ...</option>-->
+<!--              <option value="1">One</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--          <div class="col-auto">-->
+<!--            <button type="submit" class="btn btn-primary">Tìm kiếm</button>-->
+<!--          </div>-->
+<!--        </form>-->
       </div>
 
       <br>
@@ -37,71 +37,37 @@
         <table class="table table-striped table-hover">
           <thead>
           <tr>
-            <th scope="col">STT</th>
+            <th scope="col">Mã nhân viên</th>
             <th scope="col">Họ tên</th>
             <th scope="col">Ngày sinh</th>
             <th scope="col">Giới tính</th>
+<!--            <th scope="col">CMND</th>-->
+            <th scope="col">Bộ phận</th>
             <th scope="col">Vị trí</th>
             <th scope="col">Trình độ</th>
-            <th scope="col">Email</th>
+<!--            <th scope="col">Email</th>-->
             <th scope="col">Điện thoại</th>
             <th scope="col">Lương</th>
             <th scope="col">Tác vụ</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>1</td>
-            <td>Nguyên</td>
-            <td>21-01-1998</td>
+          <tr *ngFor="let item of employeeList">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.birthday}}</td>
             <td>Nam</td>
-            <td>Lễ tân</td>
-            <td>Đại học</td>
-            <td>khactut@gmail.com</td>
-            <td>0338967557</td>
-            <td>10000</td>
+<!--            <td>{{item.idCard}}</td>-->
+            <td>{{item.position.name}}</td>
+            <td>{{item.division.name}}</td>
+            <td>{{item.education.name}}</td>
+<!--            <td>{{item.email}}</td>-->
+            <td>{{item.phone}}</td>
+            <td>{{item.salary}}</td>
             <td>
-              <a type="button" class="btn btn-primary">
-                <i class="far fa-edit"></i>
-              </a>
-              <button type="button" class="btn btn-danger">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-
-          <tr>
-            <td>1</td>
-            <td>Nguyên</td>
-            <td>21-01-1998</td>
-            <td>Nam</td>
-            <td>Lễ tân</td>
-            <td>Đại học</td>
-            <td>khactut@gmail.com</td>
-            <td>0338967557</td>
-            <td>10000</td>
-            <td>
-              <a type="button" class="btn btn-primary">
-                <i class="far fa-edit"></i>
-              </a>
-              <button type="button" class="btn btn-danger">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Nguyên</td>
-            <td>21-01-1998</td>
-            <td>Nam</td>
-            <td>Lễ tân</td>
-            <td>Đại học</td>
-            <td>khactut@gmail.com</td>
-            <td>0338967557</td>
-            <td>10000</td>
-            <td>
-              <a type="button" class="btn btn-primary">
-                <i class="far fa-edit"></i>
+              <a type="button" class="btn btn-primary" routerLink="/employee/update/{{item.id}}">
+                Cập nhật
+<!--                <i class="far fa-edit"></i>-->
               </a>
               <button type="button" class="btn btn-danger">
                 <i class="fas fa-trash"></i>

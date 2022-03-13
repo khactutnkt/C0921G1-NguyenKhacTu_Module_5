@@ -1,33 +1,129 @@
 <div class="container">
   <div class="row">
     <h2 class="text-center">CẬP NHẬT THÔNG TIN DỊCH VỤ</h2>
-    <form class="row g-3">
-      <div class="col-md-12">
-        <label for="inputEmail4" class="form-label">Tên dịch vụ</label>
-        <input type="text" class="form-control" id="inputEmail4">
+    <form class="row g-3" [formGroup]="updateForm" (ngSubmit)="updateFacility()">
+
+      <div class="col-md-4">
+        <label for="id" class="form-label">Mã dịch vụ</label>
+        <input type="text" class="form-control" id="id" required="required" formControlName="id">
+        <div class="text-danger"
+             *ngIf="updateForm.get('id').hasError('required') && updateForm.get('id').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="updateForm.get('id').hasError('pattern')">
+          Mã dịch vụ không hợp lệ.
+        </div>
       </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Diện tích sử dụng</label>
-        <input type="text" class="form-control" id="inputPassword4">
+
+      <div class="col-md-4">
+        <label for="name" class="form-label">Tên dịch vụ</label>
+        <input type="text" class="form-control" id="name" required="required" formControlName="name">
+        <div class="text-danger"
+             *ngIf="updateForm.get('name').hasError('required') && updateForm.get('name').dirty">
+          Mục này không được để trống.
+        </div>
       </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Chi phí thuê</label>
-        <input type="text" class="form-control" >
+
+      <div class="col-md-4">
+        <label for="image" class="form-label">Hình ảnh</label>
+        <input type="text" class="form-control" id="image" required="required" formControlName="image">
+        <div class="text-danger"
+             *ngIf="updateForm.get('image').hasError('required') && updateForm.get('image').dirty">
+          Mục này không được để trống.
+        </div>
       </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Số lượng người tối đa</label>
-        <input type="number" class="form-control" >
+
+      <div class="col-md-4">
+        <label for="area" class="form-label">Diện tích sử dụng</label>
+        <input type="text" class="form-control" id="area" required="required" formControlName="area">
+        <div class="text-danger"
+             *ngIf="updateForm.get('area').hasError('required') && updateForm.get('area').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="updateForm.get('area').hasError('min')">
+          Mục này không nhận giá trị âm.
+        </div>
       </div>
-      <div class="col-md-6">
-        <label for="inputState" class="form-label">Kiểu thuê</label>
-        <select id="inputState" class="form-select">
-          <option selected>-- Chọn kiểu thuê --</option>
-          <option>...</option>
+
+      <div class="col-md-4">
+        <label for="cost" class="form-label">Giá dịch vụ</label>
+        <input type="text" class="form-control" id="cost" required="required" formControlName="cost">
+        <div class="text-danger"
+             *ngIf="updateForm.get('cost').hasError('required') && updateForm.get('cost').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="updateForm.get('cost').hasError('min')">
+          Mục này không nhận giá trị âm.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="numberMaxOfPeople" class="form-label">Số người tối đa</label>
+        <input type="text" class="form-control" id="numberMaxOfPeople" required="required" formControlName="numberMaxOfPeople">
+        <div class="text-danger"
+             *ngIf="updateForm.get('numberMaxOfPeople').hasError('required') && updateForm.get('numberMaxOfPeople').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="updateForm.get('numberMaxOfPeople').hasError('min')">
+          Mục này không nhận giá trị âm.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="rentType" class="form-label">Kiểu thuê</label>
+        <select id="rentType" class="form-select" formControlName="rentType">
+          <option disabled selected>-- Chọn kiểu thuê--</option>
+          <option *ngFor="let item of rentTypeList" value="{{item}}">{{item.name}}</option>
         </select>
       </div>
 
+      <div class="col-md-4">
+        <label for="roomStandard" class="form-label">Tiêu chuẩn phòng</label>
+        <input type="text" class="form-control" id="roomStandard" required="required" formControlName="roomStandard">
+        <div class="text-danger"
+             *ngIf="updateForm.get('roomStandard').hasError('required') && updateForm.get('roomStandard').dirty">
+          Mục này không được để trống.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="description" class="form-label">Mô tả thêm</label>
+        <input type="text" class="form-control" id="description" required="required" formControlName="description">
+        <div class="text-danger"
+             *ngIf="updateForm.get('description').hasError('required') && updateForm.get('description').dirty">
+          Mục này không được để trống.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="poolArea" class="form-label">Số người tối đa</label>
+        <input type="text" class="form-control" id="poolArea" required="required" formControlName="poolArea">
+        <div class="text-danger"
+             *ngIf="updateForm.get('poolArea').hasError('min')">
+          Mục này không nhận giá trị âm.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="numberOfFloor" class="form-label">Số tầng</label>
+        <input type="text" class="form-control" id="numberOfFloor" required="required" formControlName="numberOfFloor">
+        <div class="text-danger"
+             *ngIf="updateForm.get('numberOfFloor').hasError('min')">
+          Mục này không nhận giá trị âm.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="freeAccompanyingService" class="form-label">Số người tối đa</label>
+        <input type="text" class="form-control" id="freeAccompanyingService" required="required" formControlName="freeAccompanyingService">
+      </div>
+
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Xác nhận</button>
+        <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid">Xác nhận</button>
       </div>
     </form>
   </div>

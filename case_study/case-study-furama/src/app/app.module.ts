@@ -16,6 +16,9 @@ import { ContractCreateComponent } from './contract/contract-create/contract-cre
 import { EmpployeeListComponent } from './employee/empployee-list/empployee-list.component';
 import { EmployeeCreateComponent } from './employee/employee-create/employee-create.component';
 import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -32,11 +35,14 @@ import { EmployeeUpdateComponent } from './employee/employee-update/employee-upd
     ContractCreateComponent,
     EmpployeeListComponent,
     EmployeeCreateComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

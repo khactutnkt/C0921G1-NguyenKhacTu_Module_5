@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
         <div class="p-2 flex-grow-1 bd-highlight">
-          <a type="button" class="btn btn-primary ">THÊM MỚI HỢP ĐỒNG</a>
+          <a type="button" class="btn btn-primary " [routerLink]="['/contract/create']">Thêm mới hợp đồng</a>
         </div>
 
       <div class="row">
@@ -11,11 +11,10 @@
         <table class="table table-striped table-hover">
           <thead>
           <tr>
-            <th scope="col">STT</th>
+            <th scope="col">Mã hợp đồng</th>
             <th scope="col">Khách hàng</th>
             <th scope="col">Dịch vụ</th>
             <th scope="col">Nhân viên</th>
-            <th scope="col">Số hợp đồng</th>
             <th scope="col">Ngày bắt đầu</th>
             <th scope="col">Ngày kết thúc</th>
             <th scope="col">Tiền đặt cọc</th>
@@ -24,39 +23,17 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>1</td>
-            <td>Nguyên</td>
-            <td>Villa</td>
-            <td>Từ</td>
-            <td>HD-100</td>
-            <td>10-10-2022</td>
-            <td>20-10-2022</td>
-            <td>10000</td>
-            <td>25000</td>
+          <tr *ngFor="let item of contractList">
+            <td>{{item.id}}</td>
+            <td>{{item.customer.name}}</td>
+            <td>{{item.facility.name}}</td>
+            <td>{{item.employee.name}}</td>
+            <td>{{item.startDay}}</td>
+            <td>{{item.endDay}}</td>
+            <td>{{item.deposits}}</td>
+            <td>{{item.totalPaymentAmount}}</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Nguyên</td>
-            <td>Villa</td>
-            <td>Từ</td>
-            <td>HD-100</td>
-            <td>10-10-2022</td>
-            <td>20-10-2022</td>
-            <td>10000</td>
-            <td>25000</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Nguyên</td>
-            <td>Villa</td>
-            <td>Từ</td>
-            <td>HD-100</td>
-            <td>10-10-2022</td>
-            <td>20-10-2022</td>
-            <td>10000</td>
-            <td>25000</td>
-          </tr>
+
           </tbody>
         </table>
       </div>

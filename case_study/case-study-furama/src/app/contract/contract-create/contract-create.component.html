@@ -1,51 +1,94 @@
 <div class="container">
   <div class="row">
     <h2 class="text-center">THÊM MỚI HỢP ĐỒNG</h2>
-    <form class="row g-3">
+    <form class="row g-3" [formGroup]="createForm" (ngSubmit)="createContract()">
+
       <div class="col-md-4">
-        <label for="inputState" class="form-label">Khách hàng</label>
-        <select id="inputState" class="form-select">
-          <option selected>-- Chọn khách hàng --</option>
-          <option>...</option>
+        <label for="contractId" class="form-label">Mã hợp đồng</label>
+        <input type="text" class="form-control" id="contractId" required="required" formControlName="id">
+        <div class="text-danger"
+             *ngIf="createForm.get('id').hasError('required') && createForm.get('id').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="createForm.get('id').hasError('pattern')">
+          ID không hợp lệ.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="startDay" class="form-label">Ngày bắt đầu</label>
+        <input type="date" class="form-control" id="startDay" required="required" formControlName="startDay">
+        <div class="text-danger"
+             *ngIf="createForm.get('startDay').hasError('required') && createForm.get('startDay').dirty">
+          Mục này không được để trống.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="endDay" class="form-label">Ngày kết thúc</label>
+        <input type="date" class="form-control" id="endDay" required="required" formControlName="endDay">
+        <div class="text-danger"
+             *ngIf="createForm.get('endDay').hasError('required') && createForm.get('endDay').dirty">
+          Mục này không được để trống.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="customer" class="form-label">Khách hàng</label>
+        <select id="customer" class="form-select" formControlName="customer">
+          <option disabled selected>-- Chọn khách hàng--</option>
+          <option *ngFor="let item of customerList" value="{{item}}">{{item.name}}</option>
         </select>
       </div>
 
       <div class="col-md-4">
-        <label for="inputState" class="form-label">Dịch vụ</label>
-        <select class="form-select">
-          <option selected>-- Chọn dịch vụ --</option>
-          <option>...</option>
+        <label for="employee" class="form-label">Nhân viên lập hợp đồng</label>
+        <select id="employee" class="form-select" formControlName="employee">
+          <option disabled selected>-- Chọn nhân viên--</option>
+          <option *ngFor="let item of employeeList" value="{{item}}">{{item.name}}</option>
         </select>
       </div>
 
       <div class="col-md-4">
-        <label for="inputState" class="form-label">Nhân viên lập hợp đồng</label>
-        <select class="form-select">
-          <option selected>-- Chọn nhân viên --</option>
-          <option>...</option>
+        <label for="facility" class="form-label">Dịch vụ thuê</label>
+        <select id="facility" class="form-select" formControlName="facility">
+          <option selected disabled>-- Chọn dịch vụ --</option>
+          <option *ngFor="let item of facilityList" value="{{item}}">{{item.name}}</option>
         </select>
       </div>
 
-      <div class="col-md-3">
-        <label for="inputPassword4" class="form-label">Ngày bắt đầu</label>
-        <input type="date" class="form-control" >
-      </div>
-      <div class="col-md-3">
-        <label for="inputPassword4" class="form-label">Ngày kết thúc</label>
-        <input type="date" class="form-control" >
+
+
+      <div class="col-md-4">
+        <label for="deposits" class="form-label">Tiền đặt cọc</label>
+        <input type="text" class="form-control" id="deposits" required="required" formControlName="deposits">
+        <div class="text-danger"
+             *ngIf="createForm.get('deposits').hasError('required') && createForm.get('deposits').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="createForm.get('deposits').hasError('min')">
+          Tiền đặt cọc phải lớn hơn 1000.
+        </div>
       </div>
 
-      <div class="col-md-3">
-        <label for="inputPassword4" class="form-label">Tiền đặt cọc</label>
-        <input type="text" class="form-control" id="inputPassword4">
+      <div class="col-md-4">
+        <label for="totalPaymentAmount" class="form-label">Tổng tiền thanh toán</label>
+        <input type="text" class="form-control" id="totalPaymentAmount" required="required" formControlName="totalPaymentAmount">
+        <div class="text-danger"
+             *ngIf="createForm.get('totalPaymentAmount').hasError('required') && createForm.get('totalPaymentAmount').dirty">
+          Mục này không được để trống.
+        </div>
+        <div class="text-danger"
+             *ngIf="createForm.get('totalPaymentAmount').hasError('min')">
+          Tổng tiền thanh toán phải lớn hơn 1000.
+        </div>
       </div>
-      <div class="col-md-3">
-        <label for="inputPassword4" class="form-label">Tổng tiền thanh toán</label>
-        <input type="text" class="form-control" >
-      </div>
+
 
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Xác nhận</button>
+        <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">Xác nhận</button>
       </div>
     </form>
   </div>
