@@ -102,7 +102,7 @@
         <label for="inputState" class="form-label">Bộ phận làm việc</label>
         <select id="inputState" class="form-select" formControlName="position">
           <option disabled selected>-- Chọn bộ phận --</option>
-          <option *ngFor="let item of positionList" value="{{item}}">{{item.name}}</option>
+          <option *ngFor="let item of positionList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 
@@ -110,7 +110,7 @@
         <label for="education" class="form-label">Trình độ học vấn</label>
         <select id="education" class="form-select" formControlName="education">
           <option disabled selected>-- Chọn trình độ --</option>
-          <option *ngFor="let item of educationList" value="{{item}}">{{item.name}}</option>
+          <option *ngFor="let item of educationList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 
@@ -118,7 +118,7 @@
         <label for="division" class="form-label">Chức vụ</label>
         <select id="division" class="form-select" formControlName="division">
           <option disabled selected>-- Chọn chúc vụ --</option>
-          <option *ngFor="let item of divisionList" value="{{item}}">{{item.name}}</option>
+          <option *ngFor="let item of divisionList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 

@@ -38,7 +38,7 @@
         <label for="customer" class="form-label">Khách hàng</label>
         <select id="customer" class="form-select" formControlName="customer">
           <option disabled selected>-- Chọn khách hàng--</option>
-          <option *ngFor="let item of customerList" value="{{item}}">{{item.name}}</option>
+          <option *ngFor="let item of customerList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 
@@ -46,7 +46,7 @@
         <label for="employee" class="form-label">Nhân viên lập hợp đồng</label>
         <select id="employee" class="form-select" formControlName="employee">
           <option disabled selected>-- Chọn nhân viên--</option>
-          <option *ngFor="let item of employeeList" value="{{item}}">{{item.name}}</option>
+          <option *ngFor="let item of employeeList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 
@@ -54,7 +54,7 @@
         <label for="facility" class="form-label">Dịch vụ thuê</label>
         <select id="facility" class="form-select" formControlName="facility">
           <option selected disabled>-- Chọn dịch vụ --</option>
-          <option *ngFor="let item of facilityList" value="{{item}}">{{item.name}}</option>
+          <option *ngFor="let item of facilityList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 

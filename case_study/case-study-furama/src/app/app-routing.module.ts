@@ -6,7 +6,6 @@ import {CustomerRoutingModule} from './customer/customer-routing.module';
 import {EmployeeRoutingModule} from './employee/employee-routing.module';
 import {ContractRoutingModule} from './contract/contract-routing.module';
 import {FacilityRoutingModule} from './facility/facility-routing.module';
-
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'customer',

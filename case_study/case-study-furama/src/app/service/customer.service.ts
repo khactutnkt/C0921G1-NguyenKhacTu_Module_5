@@ -1,39 +1,34 @@
 import { Injectable } from '@angular/core';
 import {Customer} from '../model/customer';
-import {CustomerType} from '../model/customer-type';
-
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+// const API_URL = `${environment.apiUrl}`;
+const API_URL = 'http://localhost:3000';
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  customerList: Customer[];
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
-  public getAll(): Customer[]{
-    this.customerList = [];
-    // this.customerTypeList = this.customerTypeService.getAll();
-    this.customerList.push(new Customer('KH-0001', 'Nguyễn Khắc Từ', 1, '1998-01-21',
-      '197411635', '0338967557', 'khactut@gmail.com', new CustomerType(1, 'Diamond'), 'Quảng Trị' ));
-    this.customerList.push(new Customer('KH-0002', 'Nguyễn Sơn Thái', 0, '1998-01-21',
-      '197411635', '0338967557', 'sonthai@gmail.com', new CustomerType(2, 'Platinum'), 'Nghệ An' ));
-    this.customerList.push(new Customer('KH-0003', 'Trần Minh Chiến', 1, '1998-01-21',
-      '197411635', '0338967557', 'minhchien@gmail.com', new CustomerType(3, 'Gold'), 'Quảng Bình' ));
-    return this.customerList;
+  getAll(): Observable<Customer[]>{
+    return this.httpClient.get<Customer[]>(API_URL + '/customer');
   }
 
-  findById(id: string): Customer{
-    this.customerList = this.getAll();
-    // for (const customer of this.customerList) {
-    //   if (customer.id === id){
-    //     return customer;
-    //   }
-    // }
-    // return null;
-    return this.customerList.find(customElements => customElements.id === id);
+  saveCustomer(customer: Customer): Observable<void> {
+    return this.httpClient.post<void>(API_URL + '/customer', customer);
   }
 
-  // saveCustomer(customer: any) {
-  //   this.customerList.push(customer);
-  // }
+  findById(id: string): Observable<Customer> {
+    return this.httpClient.get<Customer>(API_URL + '/customer/' + id);
+  }
+
+  updateCustomer(customer: Customer): Observable<void> {
+    return this.httpClient.put<void>(API_URL + '/customer/' + customer.id, customer);
+  }
+
+  deleteCustomer(id: string): Observable<void> {
+    return this.httpClient.delete<void>(API_URL + '/customer/' + id);
+  }
+
 }

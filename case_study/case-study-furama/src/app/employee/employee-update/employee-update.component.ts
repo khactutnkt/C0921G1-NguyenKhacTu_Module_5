@@ -43,14 +43,21 @@ export class EmployeeUpdateComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.positionService.getAllPosition().subscribe(value => {this.positionList = value});
+    this.divisionService.getAllDivision().subscribe(value => {this.divisionList = value});
+    this.educationService.getAllEducation().subscribe(value => {this.educationList = value});
+    
     const id = this.activatedRoute.snapshot.params.id;
-    this.employee = this.employeeService.findById(id);
-    this.updateForm.setValue(this.employee);
-    console.log(this.employee);
+
+    this.employeeService.findById(id).subscribe(value => {
+      this.employee = value;
+      this.updateForm.setValue(this.employee);
+    });
   }
 
   updateEmployee() {
-    console.log(this.updateForm.value);
-    this.router.navigateByUrl('employee/list');
+    const employeeObj = this.updateForm.value;
+    this.employeeService.updateEmployee(employeeObj).subscribe(value => {this.router.navigateByUrl('employee/list');});
+
   }
 }

@@ -68,7 +68,7 @@
         <label for="rentType" class="form-label">Kiểu thuê</label>
         <select id="rentType" class="form-select" formControlName="rentType">
           <option disabled selected>-- Chọn kiểu thuê--</option>
-          <option *ngFor="let item of rentTypeList" value="{{item}}">{{item.name}}</option>
+          <option *ngFor="let item of rentTypeList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 

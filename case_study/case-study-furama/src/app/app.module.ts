@@ -19,6 +19,11 @@ import { EmployeeUpdateComponent } from './employee/employee-update/employee-upd
 import {ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import { CustomerDeleteComponent } from './customer/customer-delete/customer-delete.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { EmployeeDeleteComponent } from './employee/employee-delete/employee-delete.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +41,20 @@ import {RouterModule} from '@angular/router';
     EmpployeeListComponent,
     EmployeeCreateComponent,
     EmployeeUpdateComponent,
-    HomeComponent
+    HomeComponent,
+    CustomerDeleteComponent,
+    EmployeeDeleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

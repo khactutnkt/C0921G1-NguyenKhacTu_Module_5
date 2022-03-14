@@ -2,19 +2,10 @@
   <div class="row">
     <h2 class="text-center">CẬP NHẬT THÔNG TIN KHÁCH HÀNG</h2>
     <form class="row g-3" [formGroup]="updateForm" (ngSubmit)="updateCustomer()">
-      <div class="col-md-4">
-        <label for="customerId" class="form-label">Mã khách hàng</label>
+      <div class="col-md-4" hidden>
+<!--        <label for="customerId" class="form-label">Mã khách hàng</label>-->
         <input type="text" class="form-control" id="customerId" required="required" formControlName="id">
-        <div class="text-danger"
-             *ngIf="updateForm.get('id').hasError('required') && updateForm.get('id').dirty">
-          Mục này không được để trống.
-        </div>
-        <div class="text-danger"
-             *ngIf="updateForm.get('id').hasError('pattern')">
-          ID không hợp lệ.
-        </div>
       </div>
-
 
       <div class="col-md-4">
         <label for="customerName" class="form-label">Họ và tên</label>
@@ -90,8 +81,8 @@
       <div class="col-md-3">
         <label for="inputState" class="form-label">Loại khách</label>
         <select id="inputState" class="form-select" formControlName="customerType">
-          <option disabled selected>-- Chọn loại khách --</option>
-          <option *ngFor="let item of customerTypeList" value="{{item}}">{{item.name}}</option>
+          <option disabled>-- Chọn loại khách --</option>
+          <option *ngFor="let item of customerTypeList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 

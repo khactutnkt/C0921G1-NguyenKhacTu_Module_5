@@ -3,6 +3,7 @@ import {CustomerType} from '../../model/customer-type';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerTypeService} from '../../service/customer-type.service';
 import {CustomerService} from '../../service/customer.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-customer-create',
@@ -25,17 +26,17 @@ export class CustomerCreateComponent implements OnInit {
     address: new FormControl('', Validators.required)
   });
 
-  constructor(private customerTypeService: CustomerTypeService, private customerService: CustomerService) { }
+  constructor(private customerTypeService: CustomerTypeService, private customerService: CustomerService,
+              private router: Router) { }
 
   ngOnInit(): void {
-    this.customerTypeList = this.customerTypeService.getAll();
-    // console.log('danh sách có:' + this.customerTypeList.length);
+    this.customerTypeService.getAll().subscribe(value => {this.customerTypeList = value;});
   }
 
   createCustomer() {
-    console.log(this.createForm.value);
-    // const customer = this.createForm.value;
-    // this.customerService.saveCustomer(customer);
+    if (this.createForm.valid){
+      this.customerService.saveCustomer(this.createForm.value).subscribe(value => {this.router.navigateByUrl('customer/list');});
 
+    }
   }
 }

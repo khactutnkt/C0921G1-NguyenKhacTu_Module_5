@@ -7,6 +7,7 @@ import {Education} from '../../model/education';
 import {Division} from '../../model/division';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {EmployeeService} from '../../service/employee.service';
+import {Employee} from '../../model/employee';
 
 @Component({
   selector: 'app-employee-create',
@@ -37,12 +38,15 @@ export class EmployeeCreateComponent implements OnInit {
               private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.positionList = this.positionService.getAll();
-    this.educationList = this.educationService.getAll();
-    this.divisionList = this.divisionService.getAll();
+    this.positionService.getAllPosition().subscribe(value => {this.positionList = value});
+    this.divisionService.getAllDivision().subscribe(value => {this.divisionList = value});
+    this.educationService.getAllEducation().subscribe(value => {this.educationList = value});
   }
 
   createEmployee() {
-    console.log(this.createForm.value);
+    if (this.createForm.valid){
+      console.log(this.createForm.value);
+      this.employeeService.saveEmployee(this.createForm.value).subscribe();
+    }
   }
 }

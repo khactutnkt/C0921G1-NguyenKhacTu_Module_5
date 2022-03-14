@@ -1,0 +1,390 @@
+{
+  "customer": [
+    {
+      "id": "KH-0005",
+      "name": "Bùi Xuân Huấn",
+      "gender": "1",
+      "birthday": "1995-03-03",
+      "idCard": "122345681",
+      "phone": "0901222222",
+      "email": "Asensio@Real",
+      "customerType": {
+        "id": 4,
+        "name": "Member"
+      },
+      "address": "Da Nang xịnn"
+    },
+    {
+      "id": "KH-0008",
+      "name": "Khá Bảnh",
+      "gender": "1",
+      "birthday": "2022-03-04",
+      "idCard": "122345687",
+      "phone": "0901222228",
+      "email": "hung@gmail",
+      "customerType": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "address": "Hoi An"
+    },
+    {
+      "id": "KH-0111",
+      "name": "Nguyễn Khắc Từ",
+      "gender": "1",
+      "birthday": "2022-03-06",
+      "idCard": "111111112",
+      "phone": "0909999999",
+      "email": "khactut@gmail.com",
+      "customerType": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "address": "quang tri"
+    },
+    {
+      "id": "KH-0122",
+      "name": "Lê Hồng Nam",
+      "gender": "0",
+      "birthday": "1990-03-03",
+      "idCard": "122345681",
+      "phone": "0901222222",
+      "email": "lehongnam@bk.com",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "address": "Da Nang"
+    },
+    {
+      "id": "KH-0003",
+      "name": "Vinicius Jr",
+      "gender": "1",
+      "birthday": "2022-03-04",
+      "idCard": "111111111",
+      "phone": "0901222222",
+      "email": "khactut@gmail.com",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "address": "Da Nang"
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Member"
+    }
+  ],
+  "Position": [
+    {
+      "id": 1,
+      "name": "Sale – Marketing"
+    },
+    {
+      "id": 2,
+      "name": "Hành Chính"
+    },
+    {
+      "id": 3,
+      "name": "Phục vụ"
+    },
+    {
+      "id": 4,
+      "name": "Quản lý"
+    }
+  ],
+  "Education": [
+    {
+      "id": 1,
+      "name": "Trung cấp"
+    },
+    {
+      "id": 2,
+      "name": "Cao đẳng"
+    },
+    {
+      "id": 3,
+      "name": "Đại học"
+    },
+    {
+      "id": 4,
+      "name": "Sau đại học"
+    }
+  ],
+  "Division": [
+    {
+      "id": 1,
+      "name": "Lễ tân"
+    },
+    {
+      "id": 2,
+      "name": "Phục vụ"
+    },
+    {
+      "id": 3,
+      "name": "Chuyên viên"
+    },
+    {
+      "id": 4,
+      "name": "Giám sát"
+    },
+    {
+      "id": 5,
+      "name": "Quản lý"
+    },
+    {
+      "id": 6,
+      "name": "Giám đốc"
+    }
+  ],
+  "employee": [
+    {
+      "id": "NV-0001",
+      "name": "Đào Bá Lộc",
+      "gender": "0",
+      "birthday": "1995-03-03",
+      "idCard": "122345681",
+      "phone": "0901222222",
+      "salary": "112001",
+      "email": "Asensio@Real",
+      "position": {
+        "id": 1,
+        "name": "Sale – Marketing"
+      },
+      "education": {
+        "id": 1,
+        "name": "Trung cấp"
+      },
+      "division": {
+        "id": 1,
+        "name": "Lễ tân"
+      }
+    },
+    {
+      "id": "NV-0002",
+      "name": "Lâm Khánh Chi",
+      "gender": "0",
+      "birthday": "1999-03-03",
+      "idCard": "122345682",
+      "phone": "0901222227",
+      "salary": "1212145",
+      "email": "vinicius@real",
+      "position": {
+        "id": 1,
+        "name": "Sale – Marketing"
+      },
+      "education": {
+        "id": 2,
+        "name": "Cao đẳng"
+      },
+      "division": {
+        "id": 1,
+        "name": "Lễ tân"
+      }
+    }
+  ],
+  "contract": [
+    {
+      "id": 1,
+      "customer": {
+        "id": "KH-0022",
+        "name": "Nguyễn Văn A",
+        "birthday": "2020-02-02",
+        "gender": 1,
+        "idCard": "0238472342",
+        "phone": "090234241",
+        "email": "a@gmail.com",
+        "customerType": {
+          "id": 1,
+          "name": "Diamond"
+        },
+        "address": "Đà Nẵng"
+      },
+      "facility": {
+        "id": "DV-0001",
+        "name": "abc",
+        "area": 1200,
+        "cost": 2000,
+        "maxOfPeople": 3,
+        "rentType": {
+          "id": 1,
+          "name": "year"
+        },
+        "img": ""
+      },
+      "dateStart": "04/08/2022",
+      "dateEnd": "07/08/2022",
+      "deposit": 200,
+      "totalMoney": 1000
+    },
+    {
+      "id": 2,
+      "customer": {
+        "id": "KH-1444",
+        "name": "Nguyễn Văn B",
+        "birthday": "2000-02-02",
+        "gender": 1,
+        "idCard": "0238472342",
+        "phone": "090234241",
+        "email": "b@gmail.com",
+        "customerType": {
+          "id": 2,
+          "name": "Platinum"
+        },
+        "address": "Đà Nẵng"
+      },
+      "facility": {
+        "id": "DV-0003",
+        "name": "kmn",
+        "area": 1000,
+        "cost": 3000,
+        "maxOfPeople": 3,
+        "rentType": {
+          "id": 1,
+          "name": "year"
+        },
+        "img": ""
+      },
+      "dateStart": "04/08/2022",
+      "dateEnd": "07/08/2022",
+      "deposit": 200,
+      "totalMoney": 1000
+    },
+    {
+      "id": "5",
+      "dateStart": "2022-03-14",
+      "dateEnd": "2022-03-15",
+      "deposit": "100",
+      "totalMoney": "2000",
+      "customer": {
+        "id": "KH-7578",
+        "name": "Văn C",
+        "birthday": "2022-03-09",
+        "gender": "0",
+        "idCard": "234234563",
+        "phone": "0902435672",
+        "email": "hfa@gmail",
+        "customerType": {
+          "id": 2,
+          "name": "Platinum"
+        },
+        "address": "Đà Nẵng"
+      },
+      "facility": {
+        "id": "DV-0002",
+        "name": "kmn",
+        "area": 1200,
+        "cost": 2000,
+        "maxOfPeople": 4,
+        "rentType": {
+          "id": 2,
+          "name": "month"
+        },
+        "img": ""
+      }
+    },
+    {
+      "id": "9",
+      "dateStart": "2022-03-15",
+      "dateEnd": "2022-03-22",
+      "deposit": "200",
+      "totalMoney": "3000",
+      "customer": {
+        "id": "KH-7564",
+        "name": "Văn Bb",
+        "birthday": "2022-03-15",
+        "gender": 0,
+        "idCard": "234354356",
+        "phone": "0902432463",
+        "email": "gd@gmail",
+        "customerType": {
+          "id": 4,
+          "name": "Member"
+        },
+        "address": "Đà Nẵng"
+      },
+      "facility": {
+        "id": "DV-0003",
+        "name": "xyz",
+        "area": 1200,
+        "cost": 2000,
+        "maxOfPeople": 3,
+        "rentType": {
+          "id": 3,
+          "name": "day"
+        },
+        "img": ""
+      }
+    }
+  ],
+  "facility": [
+    {
+      "id": "DV-0001",
+      "name": "abc",
+      "area": 1200,
+      "cost": 2000,
+      "maxOfPeople": 3,
+      "rentType": {
+        "id": 1,
+        "name": "year"
+      },
+      "img": ""
+    },
+    {
+      "id": "DV-0003",
+      "name": "xyz",
+      "area": 1200,
+      "cost": "200",
+      "maxOfPeople": 3,
+      "rentType": {
+        "id": 4,
+        "name": "hour"
+      },
+      "img": ""
+    },
+    {
+      "id": "DV-0002",
+      "name": "kmn",
+      "area": 1200,
+      "cost": 2000,
+      "maxOfPeople": 4,
+      "rentType": {
+        "id": 2,
+        "name": "month"
+      },
+      "img": ""
+    }
+  ],
+  "rentType": [
+    {
+      "id": 1,
+      "name": "year"
+    },
+    {
+      "id": 2,
+      "name": "month"
+    },
+    {
+      "id": 3,
+      "name": "day"
+    },
+    {
+      "id": 4,
+      "name": "hour"
+    }
+  ]
+}

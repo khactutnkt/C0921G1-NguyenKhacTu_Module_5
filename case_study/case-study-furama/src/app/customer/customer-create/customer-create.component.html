@@ -91,7 +91,7 @@
         <label for="inputState" class="form-label">Loại khách</label>
         <select id="inputState" class="form-select" formControlName="customerType">
           <option disabled selected>-- Chọn loại khách --</option>
-          <option *ngFor="let item of customerTypeList" value="{{item}}">{{item.name}}</option>
+          <option *ngFor="let item of customerTypeList" [ngValue]="item">{{item.name}}</option>
         </select>
       </div>
 

@@ -17,7 +17,7 @@ export class CustomerUpdateComponent implements OnInit {
   customer: Customer;
 
   updateForm: FormGroup = new FormGroup({
-    id: new FormControl('', [Validators.required, Validators.pattern('^KH-\\d{4}$')]),
+    id: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
     birthday: new FormControl('', [Validators.required]),
@@ -33,18 +33,22 @@ export class CustomerUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
-    this.customer = this.customerService.findById(id);
-    this.customerTypeList = this.customerTypeService.getAll();
-    console.log(this.customer);
-    this.updateForm.setValue(this.customer);
+
+    this.customerService.findById(id).subscribe(value => {
+      this.customer = value;
+      this.updateForm.setValue(this.customer);
+    });
+
+    this.customerTypeService.getAll().subscribe(value => {this.customerTypeList = value});
   }
 
   updateCustomer() {
-    console.log(this.updateForm.value);
-    // const customer = this.createForm.value;
-    // this.customerService.saveCustomer(customer);
-    this.router.navigateByUrl('/customer/list');
-
+    if (this.updateForm.valid){
+      const customerObj = this.updateForm.value;
+      this.customerService.updateCustomer(customerObj).subscribe(()=>{
+        this.router.navigateByUrl('/customer/list');
+      });
+    }
   }
 
 }

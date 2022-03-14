@@ -22,8 +22,8 @@ export class ContractService {
 
   getAll(): Contract[]{
     this.contractList = [];
-    this.customerList = this.customerService.getAll();
-    this.employeeList = this.employeeService.getAll();
+    // this.customerList = this.customerService.getAll();
+    // this.employeeList = this.employeeService.getAll();
     this.facilityList = this.facilityService.getAll();
 
     this.contractList.push(new Contract('HD-0001', this.customerList[0], this.facilityList[0],

@@ -36,8 +36,8 @@ export class ContractCreateComponent implements OnInit {
               private facilityService: FacilityService) { }
 
   ngOnInit(): void {
-    this.customerList = this.customerService.getAll();
-    this.employeeList = this.employeeService.getAll();
+    // this.customerList = this.customerService.getAll();
+    // this.employeeList = this.employeeService.getAll();
     this.facilityList = this.facilityService.getAll();
   }
 

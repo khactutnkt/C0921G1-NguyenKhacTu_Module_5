@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Division} from '../model/division';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+const API_URL = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +11,9 @@ import {Division} from '../model/division';
 export class DivisionService {
   divisionList: Division[];
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
-  public getAll(): Division[]{
-    this.divisionList = [];
-    this.divisionList.push(new Division(1, 'Sale – Marketing'));
-    this.divisionList.push(new Division(2, 'Hành Chính'));
-    this.divisionList.push(new Division(3, 'Phục vụ'));
-    this.divisionList.push(new Division(4, 'Quản lý'));
-    return this.divisionList;
+  getAllDivision(): Observable<Division[]>{
+    return this.httpClient.get<Division[]>(API_URL + '/division');
   }
 }
